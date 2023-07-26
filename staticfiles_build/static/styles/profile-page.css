@@ -1,0 +1,250 @@
+
+.profile-section {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    margin-top:2rem;
+  }
+  
+
+  .profile-img{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border:2px solid #e2336b;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .profile-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    object-position:center;
+    
+  }
+
+
+
+  
+  .profile-details {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .profile-name {
+    display: flex;
+    align-items: center;
+  }
+  
+  form{
+    margin-bottom: 0;
+  }
+
+  .profile-name a{
+    color: #000;
+    font-weight: 800;
+  }
+
+  
+  .profile-name .follow-btn , .profile-name .unfollow-btn {
+    margin-left: 1rem;
+    padding: 0.3rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background: #0095f6;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 1s ease;
+  }
+
+  .profile-name button:hover{
+    transform: scale(1.1);
+  }
+
+  .profile-name .unfollow-btn{
+    background: #e7e6e6;
+    color: #000;
+  }
+  
+  .profile-follow-info {
+    display: flex;
+  }
+  
+  .profile-follow-info span {
+    margin-right: 1rem;
+  }
+  
+  .profile-follow-info span strong {
+    cursor: pointer;
+  }
+  
+  .profile-desc {
+    line-height: 0.5rem;
+  }
+  
+  hr {
+    margin-top: 5rem;
+    width: 60%;
+  }
+  
+  .all-posts {
+    height: auto;
+    display: grid;
+    width: 60%;
+    margin: auto;
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+    grid-gap: 10px;
+    overflow: hidden;
+    grid-auto-rows: 300px;
+  }
+  .single-post{
+    position: relative;
+    height:100%;
+    width:100%;
+    transition: all 4s ease;
+  }
+  
+  .single-post img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+
+  /*
+  
+  .single-post:before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: background-color 1s ease;
+  }
+
+
+  .single-post:hover:before{
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width:100%;
+    height: 100%;
+} 
+   */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: all;
+}
+
+.single-post:hover .overlay {
+  opacity: 1;
+}
+
+.overlay i {
+  margin: 0;
+  padding: 10px;
+}
+
+.overlay .perpost-likes,
+.overlay .perpost-comments {
+  font-weight: bold;
+}
+
+
+.overlay .perpost-likes{
+  margin-right: 0.8rem;
+}
+
+ 
+.hamburger{
+  position:absolute;
+  top: 23px;
+  left: 10px;
+  cursor:pointer;
+  z-index:1000;
+  transition: transform 0.3s ease;
+}
+
+.hamburger i{
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.hamburger:hover{
+  transform: scale(1.2);
+}
+
+
+
+/* follow list display */
+.all-followers,.all-following{
+  display: none;
+  position: absolute;
+  width:250px;
+  height: 400px;
+  background-color:#000000a9;
+  z-index: 999;
+  overflow: scroll;
+  top:60%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  color: aliceblue;
+}
+
+.all-followers h2,.all-following h2{
+  margin-left:1.5rem ;
+}
+
+.single-follower a{
+  display: flex;
+  color: #e2336b;
+}
+
+.single-follower-btn{
+  margin:0.5rem;
+  display:flex;
+  justify-content: space-between;
+}
+
+.single-follower-btn button{
+  background: #e2336aa3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding:0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.single-follower-btn:hover button{
+  background-color: #e2336b;
+}
+.single-follower-btn:hover a{
+  color: aliceblue;
+}
+
+.all-followers.active,.all-following.active{
+  display: flex;
+  flex-direction: column;
+
+}
+
+

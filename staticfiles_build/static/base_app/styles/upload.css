@@ -1,0 +1,132 @@
+
+/* upload*/
+
+  .upload-page{
+    width: 60%;
+    margin: auto;
+    padding: 2rem;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fbfbfb;
+    box-shadow: 0 10px 10px #ffffff;
+  }
+
+#upload-account-form h2{
+  text-align: center;
+  margin-bottom:2rem ;
+}
+
+
+
+.signin-heading{
+  padding: 2rem;
+  color: #28335C;
+  margin-bottom: 2rem;
+}
+
+.signin-heading h2{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.signin-fields{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+
+
+.signin-fields input{
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.signin-fields input{
+  border:1px solid #28335c2d;
+}
+
+.signin-fields label{
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  color: #28335C;
+}
+
+.save-btn,.cancel-btn{
+  padding:0.5rem 1rem;
+
+}
+
+.cancel-btn{
+  text-decoration: none;
+  border-radius: 5px;
+  /* background-color: #FC2947; */
+  background-color: rgb(238, 83, 109);
+  color: #fff;
+  transition: all 1s ease;
+}
+
+.save-btn{
+  background-color: #5f9aee;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.save-btn:hover{
+  background-color: rgb(39, 74, 103);
+}
+
+.cancel-btn:hover{
+  background-color:#e20000 ;
+}
+
+
+#charCount{
+  margin-top: 0.5rem;
+}
+
+
+
+
+
+.error-messages{
+  position: absolute;
+  top: 10%;
+  left: 45%;
+  color: rgb(255, 255, 255);
+  padding: 0.6rem;
+  background-color: #f43e90df;
+  border-radius: 10px;
+  z-index: 999;
+  animation: fademessage 2s forwards;
+  opacity: 1; /* Set initial opacity to 1 */
+  transition: opacity 5s ease-in-out; /* Add CSS transition */
+}
+
+.error-message{
+  display: flex;
+  align-items: center;
+}
+
+.error-message button{
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+
+.error-messages.hidden {
+  opacity: 0; /* Set opacity to 0 to hide the element */
+  pointer-events: none; /* Disable pointer events on hidden element */
+}

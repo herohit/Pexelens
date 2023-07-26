@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'base_app/styles/upload.css' %}">
+{% endblock styles %}
+  
+
+    
+    {% block title %}
+    <title>Upload Page</title>
+      
+    {% endblock title %}
+    
+
+    {% block nav %}
+    {% include 'nav.html' %}
+    {% endblock nav %}
+
+
+{% block content %}
+  
+    <section class="upload-page animate-in">
+  
+      <form id="upload-account-form"  action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Upload Post</h2>
+
+
+        <div class="signin-fields">
+          <label for="{{field.id_for_label}}">Select Photo</label>
+          {{form.image}}
+        </div>
+
+        <div class="signin-fields">
+          <label for="id_caption">Caption</label>
+          {{form.caption}}
+          <span id="charCount">75 characters remaining</span>
+        </div>
+          <a class="cancel-btn" href="/">Cancel</a>
+          <input class="save-btn" type="submit" value="upload">
+      </form>
+    </section>
+        
+{% endblock content %} 
+        
+
+
+{% block scripts %}
+<script src="{% static 'base_app/js/upload.js' %}"></script>
+{% endblock scripts %}  
+    

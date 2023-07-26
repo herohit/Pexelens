@@ -1,0 +1,99 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'base_app/styles/edit-profile.css' %}">
+{% endblock styles %}
+  
+    
+{% block title %}
+    <title>Edit Profile</title>
+{% endblock title %}
+      
+{% block nav %}
+{% include 'nav.html' %}
+{% endblock nav %}
+
+
+
+
+{% block content %}
+
+
+{% if messages %}
+<div class="error-messages">
+  {% for message in messages %}
+  <div class="error-message">
+    <p>{{ message }}</p>
+    <button><i class="bi bi-x-circle-fill"></i></button>     
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+
+  <section class="settings-page animate-in">
+    <div class="settings-profileimg">
+        <img src="{{user_profile.profileimg.url}}" alt="">
+    </div>
+    <span class="settings-profilename">{{user.first_name}} {{user.last_name}} <button>edit<i class="bi bi-pencil-fill"></i></button></span>
+
+    <form id="settings-account-form"  action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+        <h2>Edit Profile</h2>
+
+       
+        
+        <div class="signin-fields">
+            <label for="Bio">Bio</label>
+            <input type="text" name="bio" value="{{user_profile.bio}}"  maxlength="100" id="id_bio" >
+        </div>
+        
+        <div class="signin-fields">
+            <label for="Profile Image">Change Profile Image</label>
+            <input type="file" name="profileimg" accept="image/*" id="id_profileimg">
+        </div>
+       
+        
+        <div class="signin-fields">
+            <label for="Location">Location</label>
+            <input type="text" name="location" value="{{user_profile.location}}" maxlength="100" id="id_location">
+        </div>
+        
+        
+        <a class="cancel-btn" href="/">Cancel</a>
+        <input name="profile-form"  class="save-btn" type="submit" value="Save">
+    </form>
+
+
+    <form action="" id="editname-form" class="editname-form" method="POST">
+      {% csrf_token %}
+
+      <div class="signin-fields-name">
+
+        <div class="signin-fields">
+            <label for="first-name">First Name</label>
+            <input id="first-name" name="first_name" type="text" placeholder="First name" value="{{user.first_name}}" required >
+        </div>
+
+        <div class="signin-fields">
+            <label for="last-name">Last Name</label>
+            <input id="last-name" name="last_name" type="text" placeholder="Last Name" value="{{user.last_name}}" required>
+        </div>
+
+    </div>
+      <span class="cancel-btn">Cancel</span>
+      <input name="name-form" class="save-btn" type="submit" value="Save">
+    </form>
+  </section>
+{% endblock content %}
+
+
+
+{% block scripts %}
+<script src="{% static 'base_app/js/edit-profile.js' %}"></script>
+  
+{% endblock scripts %}
+  

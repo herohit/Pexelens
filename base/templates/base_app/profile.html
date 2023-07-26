@@ -1,0 +1,188 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'base_app/styles/profile.css' %}">
+{% endblock styles %}
+
+
+
+{% block title %}
+<title>Profile</title>
+  
+{% endblock title %}
+
+
+{% block nav %}
+  {% include 'nav.html' %}
+{% endblock nav %}
+
+
+
+{% block content %}
+
+<main class="container animate-in">
+
+
+<div class="profile-section">
+    <div class="profile-img">
+      <img src="{{user_profile.profileimg.url}}" alt="">
+    </div>
+    <div class="profile-details">
+      <div class="profile-name">
+        <a href="">{{user_profile.user}}</a>
+
+        
+        {% if user == request.user %}
+          <a href="{% url 'settings' %}" class="editprofile-btn">Edit Profile <i class="bi bi-gear"></i></a>
+        
+        {% else %}
+        
+
+          {% if it_follows %}
+          <button type="submit" name="unfollow" data-csrf="{{ csrf_token }}" data-value="unfollow" data-userid="{{user.username}}" class="unfollow-btn">UnFollow</button>
+          {% else %}
+          <button type="submit" name="follow" data-csrf="{{ csrf_token }}" data-value="follow" data-userid="{{user.username}}" class="follow-btn" >Follow</button>
+          {% endif %}  
+        {% endif %}
+      </div>
+
+
+
+      <div class="profile-follow-info">
+  
+        <span>{{user_post|length}} <strong class="my-posts">posts</strong></span>
+
+
+        <div class="followers-list">
+          <div class="follower-count">
+            <span id="followerCount">{{ user_profile.Followed_by.all.count }}</span><strong class="my-followers">followers</strong>
+          </div>
+          
+
+          <div class="all-followers">
+            <h2>All Followers List</h2>
+            <div class="single-follower">
+              
+
+              {% for following in user_profile.Followed_by.all  %}
+
+              {% if following != user_profile %}
+              <div class="single-follower-btn">
+                <div class="single-follower-img">
+                  <img src="{{following.profileimg.url}}" alt="">
+                </div>
+                <a href="{% url 'user-profile' following %}">{{following.user}}</a>
+                <a class="button-a" href="{% url 'user-profile' following %}">View</a>
+              </div>
+
+              {% endif %}
+              {% endfor %}
+  
+  
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="following-list">
+          <div class="following-count">
+            <span id="followingCount">{{user_profile.follows.all.count}}</span>
+            <strong class="my-following">following</strong>
+
+          </div>
+          <div class="all-following">
+            <h2>All Following list</h2>
+  
+            
+            <div class="single-follower">
+              {% for following in user_profile.follows.all  %}
+              
+              {% if following != user_profile %}
+                
+                
+              <div class="single-follower-btn">
+                <div class="single-follower-img">
+                  <img src="{{following.profileimg.url}}" alt="">
+                </div>
+                <a href="{% url 'user-profile' following %}">{{following.user}}</a>
+                <a class="button-a" href="{% url 'user-profile' following %}">View</a>
+              </div>
+              {% endif %}
+              {% endfor %}
+  
+            </div>
+
+  
+  
+          </div>
+        </div>
+
+
+        
+
+      </div>
+      <div class="profile-desc">
+        <h2>{{user.first_name}} {{user.last_name}}</h2>
+        <h3><span><i class="bi bi-geo-alt-fill"></i></span> {{user_profile.location}}</h3>
+        <p>"{{user_profile.bio}}"</p>
+  
+      </div>
+  
+    </div>
+  
+  </div>
+  
+  <hr>
+
+
+    
+    {% if user_post %}
+
+
+      
+
+    <section class="all-posts">
+
+      {% for post in user_post reversed  %}
+      <div class="single-post">
+        <img data-src="{{post.image.url}}" src="{{post.image.url}}" class="lazy-load" alt="">
+
+        <a href="{% url 'comment-post' post.id %}" class="overlay">
+          <i class="bi bi-heart"></i><span class="perpost-likes">{{post.no_of_likes}}</span></p>
+          <i class="bi bi-chat"></i><span class="perpost-comments">{{post.no_of_comments}}</span></p>
+        </a>
+      </div>
+
+      {% endfor %}
+
+
+    </div>
+  </section>
+  {% else %}
+  <div class="no-post">
+    <span>Nothing to show</span>
+    <p>Click <a href="{% url 'upload-post' %}">Here</a> to upload your first post.</p>
+
+  </div>
+      
+  {% endif %}
+
+
+</main>
+
+
+<button id="scrollToTop" class="animate-in"><i class="bi bi-arrow-up-circle-fill"></i></button>
+
+{% endblock content %}
+
+
+{% block scripts %}
+<script src="{% static 'base_app/js/profile.js' %}"></script>
+
+{% endblock scripts %}
+  

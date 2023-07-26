@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'styles/newlogin.css' %}">
+    <title>PexeLens - login</title>
+</head>
+<body>
+    <div class="logo">
+            <a href="{% url 'home' %}">Pixe<span>L</span>ens</a>
+        </div>
+    <div class="signin-container">
+
+        {% if messages %}
+        <div class="error-messages">
+        {% for message in messages %}
+        <div class="error-message">
+            <p>{{ message }}</p>
+            <button><i class="bi bi-x-circle-fill"></i></button>     
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+        <div id="signin-page" class="card">
+            
+            <form id="signin-form" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="signin-heading">
+                    <h2>Sign in to your account</h2>
+                </div>
+                
+
+                <div class="signin-fields">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" placeholder="Enter your username" name="username" required>
+                </div>
+
+                <div class="signin-fields">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Enter your password" name="password" required>
+                </div>
+                
+                <button class="sign-button" type="">Sign in</button>
+            </form>
+            
+            <span>Don't have an account?<button class="signup-link">Sign Up</button></span>
+             
+            
+            
+                <div class="wave">
+                    <img src="{% static 'images/Path.png' %}" alt="">
+                </div>
+                <div class="wave">
+                    <img src="{% static 'images/Path 2.png' %}" alt="">
+                </div>
+
+
+        </div>
+
+
+        
+  <div class="card" id="register-card">
+
+    <form id="signin-form" action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div class="signin-heading">
+            <h2>Register your Account</h2>
+        </div>
+        
+
+        <!-- <div class="signin-fields"> 
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Enter your email" required>
+        </div>
+-->
+        <div class="signin-fields">
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username}}
+          </div>
+        
+          <div class="signin-fields">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+          </div>
+
+          <div class="signin-fields-name">
+
+
+          
+        
+          <div class="signin-fields">
+            <label for="{{ form.first_name.id_for_label }}">First name</label>
+            {{ form.first_name }}
+          </div>
+        
+          <div class="signin-fields">
+            <label for="{{ form.last_name.id_for_label }}">Last name</label>
+            {{ form.last_name }}
+          </div>
+
+
+          </div>
+        
+          <div class="signin-fields">
+            <label for="{{ form.password1.id_for_label }}">Password</label>
+            {{ form.password1 }}
+          </div>
+        
+          <div class="signin-fields">
+            <label for="{{ form.password2.id_for_label }}">Password confirmation</label>
+            {{ form.password2 }}
+          </div>
+
+        
+        <button class="sign-button" type="">Sign up</button>
+    </form>
+    
+    <span>Already have an account?<button class="signin-link">Sign In</button></span>
+     
+    
+    
+        <div class="wave">
+            <img src="{% static 'images/Path 2.png' %}" alt="">
+        </div>
+        <div class="wave">
+            <img src="{% static 'images/Path.png' %}" alt="">
+        </div>
+
+  </div>
+
+
+
+    </div>
+
+    <script src="{% static 'js/newlogin.js' %}"></script>
+    </body>
+</html>

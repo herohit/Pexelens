@@ -1,0 +1,112 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load displayTimeCustom %} 
+
+    
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'base_app/styles/notification.css' %}">
+{% endblock styles %}
+
+
+    
+{% block title %}
+    <title>Notification</title>
+{% endblock title %}
+    
+
+
+    
+{% block nav %}
+    {% include 'nav.html' %}
+{% endblock nav %}
+    
+    
+{% block content %}
+        
+  
+<section class="notification-page animate-in">
+
+    <div class="heading">
+        <h1>Notifications</h1>
+        <i class="bi bi-bell-fill"></i>
+    </div>
+
+
+    <div class="all-notification">
+    
+    {% if notifications %}
+        
+    
+        
+    {% for notif in notifications %}
+    
+    {% if notif.iscomment %}
+    
+    <div class="notif">
+        <div class="profile-img">
+            {% for profile in user_profiles %}
+                {% if profile.user == notif.liked_by %}
+                    <img src="{{ profile.profileimg.url }}" alt="Profile Image">
+                {% endif %}
+            {% endfor %}
+            
+        </div>
+        <div class="post-desc">
+            <p><a href="">{{ notif.liked_by.username }}</a>commented : <span class="post-comment">"{{notif.comment_detail.body}}"</span>  <span class="post-desc-time">{{notif.created_at|display_time_elapsed}} ago</span></p>
+            {% if notif.post.caption %}
+                
+            <p class="post-bio">"{{notif.post.caption}}"</p>
+            {% endif %}
+        </div>
+        <div class="post-photo">
+            <a href="{% url 'comment-post' notif.post.id %}"><img src="{{notif.post.image.url}}" alt="post-img"></a>
+        </div>
+    </div>
+    {% else %}
+    <div class="notif">
+        <div class="profile-img">
+            {% for profile in user_profiles %}
+                {% if profile.user == notif.liked_by %}
+                    <img src="{{ profile.profileimg.url }}" alt="Profile Image">
+                {% endif %}
+            {% endfor %}
+            
+        </div>
+        <div class="post-desc">
+            <p><a href="">{{ notif.liked_by.username }}</a>liked a post. <span class="post-desc-time">{{notif.created_at|display_time_elapsed}} ago</span></p>
+            
+            {% if notif.post.caption %}
+                
+            <p class="post-bio">"{{notif.post.caption}}"</p>
+            {% endif %}
+                
+        </div>
+        <div class="post-photo">
+            <a href="{% url 'comment-post' notif.post.id %}"><img src="{{notif.post.image.url}}" alt="post-img"></a>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% endfor %}
+    
+    {% else %}
+    <p class="no-notification">No Notifications</p>
+    {% endif %}
+
+      
+    </div>
+
+
+    </section>
+    <button id="scrollToTop" class="animate-in"><i class="bi bi-arrow-up-circle-fill"></i></button>
+
+{% endblock content %}
+
+
+{% block scripts %}
+<script src="{% static 'base_app/js/notification.js'  %}"></script>
+{% endblock scripts %}
+    
+    
+</body>
+</html>

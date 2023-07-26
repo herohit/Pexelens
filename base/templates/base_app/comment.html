@@ -1,0 +1,132 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load displayTimeCustom %}
+
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'base_app/styles/comments.css' %}">
+{% endblock styles %}
+
+
+    
+    {% block title %}
+    <title>View Post</title>
+      
+    {% endblock title %}
+        
+
+{% block nav %}
+  {% include 'nav.html' %}
+{% endblock nav %}
+
+
+
+{% block content %}
+  
+<section class="comment-page">
+
+<div class="comment-section">
+  
+  {% if post.user == request.user.username  %}
+    
+  
+    
+  <div class="close">
+    <!-- <a  href="{% url 'delete-post' post.id %}"><i title="delete-post" class="bi bi-trash3-fill"></i></a> -->
+    <!-- <i class="bi bi-x-circle-fill"></i> -->
+    <i title="delete-post" class="bi bi-trash3-fill"></i>
+  </div>
+  {% endif %}
+  <div class="comment-imagediv">
+    <img src="{{post.image.url}}" alt="">
+    
+  </div>
+  <div class="comment-action">
+    
+
+    {% if post.caption %}
+    <div class="comment-username">
+      {% else %}
+      <div class="comment-username" style="height: 80px;">
+      {% endif %}
+    
+
+
+
+      <div class="comment-username-profile">
+
+        <div class="post-img ">
+            <img src="{{post_owner.profileimg.url}}" alt="profile">
+        </div>
+        <div class="user-profile-comment">
+          <a href="{% url 'user-profile' post.user %}">{{post.user}}</a>
+          <span class="post-time">{{post.created_at|display_time_elapsed}}</span>
+      </div>
+      </div>
+      
+      {% if post.caption %}
+        <p>{{post.caption}}</p>  
+       {% endif %} 
+    </div>
+
+
+    {% if post.caption %}
+    <div class="comment-comment-area">
+    {% else %}
+    <div class="comment-comment-area" style="height: 470px;">
+    {% endif %}
+      {% if comments %}
+        
+      
+        
+      {% for comment in comments  %}
+        <div class="comments">
+        <div class="comment-body">
+          <div class="comment-user-img">
+            <img src="{{post_owner.profileimg.url}}" alt="profile">
+          </div>
+          <a href="{% url 'user-profile' comment.user  %}">{{comment.user}}</a>
+          <p>{{comment.body}}</p>
+
+        </div>
+        <p class="timesince">{{comment.created_at|display_time_elapsed}} </p>
+        </div>
+      {% endfor %}
+        {% else %}
+        <p class="comment-empty">No Comments</p>
+      {% endif %}
+    </div>
+
+    <div class="comment-icons">
+      <form action="{% url 'comment-post' post.id %}" method="GET">
+      <input name="enter_comment" type="text" placeholder="Enter your comment">
+      </form> 
+      <a href="/like-postt?post_id={{post.id}}">{% if is_liked %}<i class="bi bi-heart-fill" style="color: red;"></i>{%else%}<i class="bi bi-suit-heart"></i>{% endif %}</a>
+      </div>
+
+    </div>
+    </div>
+</div>
+
+
+<div class="delete-page">
+  <form method="POST" action="{% url 'delete-post' post.id %}">
+    {% csrf_token %}
+    <p>Click to delete following post?</p>
+        <input type="submit" value="Delete">
+          <span>Cancel</span>
+      </div>
+  </form>
+</div>
+
+
+</section>
+{% endblock content %}
+
+
+
+{% block scripts %}
+<script src="{% static 'base_app/js/comment.js' %}"></script>
+
+{% endblock scripts %}

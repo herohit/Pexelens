@@ -1,0 +1,43 @@
+<nav>
+    <div class="logo">
+      <a href="{% url 'home' %}">
+        <h1>PIXE<span>L</span>ENS</h1>
+
+      </a>
+    </div>
+
+    <form class="search" action="" method="GET">
+        <label for="search"><i class="bi bi-search"></i></label>
+        <input name="q" type="text" placeholder="Search post..." id="search-input">
+    </form>
+
+    
+        <ul class="nav-links">
+            <!-- <li><a href=""><i class="bi bi-house"></i>Home</a></li> -->
+            <li><a href="{% url 'suggestion-feed' %}"><i class="bi bi-people-fill"></i>Discover</a></li>
+            <li><a href="{% url 'upload-post' %}"><i class="bi bi-image"></i>Upload</a></li>
+            <li>
+              <div class="dropdown">
+                <button class="dropdown-toggle" ><i class="bi bi-gear-wide-connected"></i>Account</button>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'user-profile' user_profile.user %}">View Profile</a></li>
+                  <li><a href="{% url 'settings' %}">Edit Profile</a></li>
+                  <!-- <li><a href="./edit-name.html">Edit Name</a></li> -->
+                </ul>
+              </div>
+            </li>
+              <li class="notif-link"><a  href="{% url 'notification' %}"><i class="bi bi-bell"></i>Notification</a>
+                {% if count_unseen_notifications %}
+                <div class="notif-count">{{count_unseen_notifications}}</div>
+                {% endif %}
+              </li>
+            <li><a id="nav-profile-link"  href="{% url 'logout' %}"><img class="nav-profile" src="{{user_profile.profileimg.url}}" alt="">Log out</a></li>
+        </ul>
+
+
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+</nav>

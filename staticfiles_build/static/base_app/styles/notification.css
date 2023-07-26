@@ -1,0 +1,171 @@
+
+nav{
+  position: sticky;
+  top: 0;
+}
+
+.nav-links{
+  z-index: 9999;
+}
+
+/* notifications */
+
+.notification-page{
+    width: 60%;
+    margin: auto;
+    padding: 2rem;
+    min-height: 92vh;
+    background-color: #fafafa;
+    box-shadow: 0 10px 10px #ffffff;
+ 
+  }
+
+
+  .heading{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-block:2rem ;
+    background-color: #fff;
+  }
+
+  .heading i{
+    font-size: 1.5rem;
+    color: grey;
+  }
+
+  .heading h1{
+    margin-right: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .post-desc p:last-child{
+    color: #6b6a6a;
+  }
+  
+  .post-desc a{
+    color: black;
+    font-weight: 800;
+    margin-right: 0.5rem;
+  }
+  .post-bio{
+    font-family: 'Nunito', sans-serif;
+    
+  }
+
+  .post-comment{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
+  }
+
+  .notif{
+    position: relative;
+    padding: 1rem;
+    background-color: rgb(235, 240, 244);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;    
+  }
+
+  .notif::before{
+    content: "";
+    position: absolute;
+    background-color: rgb(95, 140, 176);
+    height: 100%;
+    width: 2px;
+    left:0;
+  }
+
+  .post-desc{
+    width: 85%;
+  }
+  .post-desc-time{
+    color: #6b6a6a;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+  }
+
+
+  .profile-img{
+    height:45px;
+    width:45px;
+    margin-right:1rem;
+    border-radius:50%;
+    border:1px solid red;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .profile-img img{
+    height:40px;
+    width:40px;
+    border-radius:50%;
+    object-fit:cover;
+    
+  }
+  
+  
+  .post-photo{
+    width:50px;
+    height:50px;
+  }
+  
+  .post-photo img{
+    height:100%;
+    width:100%;
+    object-fit: contain;
+  }
+
+  #scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    z-index: 9999;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  #scrollToTop i{
+    font-size: 3rem;
+    color: steelblue;
+  }
+  
+
+  @media screen and (max-width:1024px){
+    .notification-page{
+      width: 90%;
+    }
+  }
+
+
+  @media screen and (max-width:600px){
+    .notification-page{
+      width: 100%;
+      padding: 0.5rem;
+    }
+    .post-desc a{
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .post-bio{
+      font-size: 13px;
+    }
+  
+    .post-comment{
+      font-size: 15px;
+    }
+
+    .post-photo{
+      width: 70px;
+    }
+  }
+
+  .no-notification{
+    position: absolute;
+    transform: translate(-50%,50%);
+    top: 50%;
+    left: 50%;
+    font-size: 3rem;
+    color: rgb(121, 121, 121);
+  }

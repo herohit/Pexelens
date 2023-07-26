@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+{% load static %}
+
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'base_app/styles/suggestions.css' %}">
+    {% endblock styles %}
+
+    {% block title %}
+    <title>Find People</title>
+    {% endblock title %}
+
+
+    
+    {% block nav %}
+    {% include 'nav.html' %}
+    {% endblock nav %}
+    
+
+
+{% block content %}
+
+<div class="error-messages">
+  <div class="error-message">
+    <p></p>
+    <button><i class="bi bi-x-circle-fill"></i></button>     
+  </div>
+</div>
+
+<main id="card-container" class="animate-in">
+    <div class="findpeople-heading">
+        <h1>Find People <i class="bi bi-people-fill"></i></h1>
+    </div>
+
+    <section class="all-cards">
+    
+    {% for profile in all_users  %}
+    
+    <div class="single-profile-card">
+        <a href="{% url 'user-profile' profile.user.username  %}" class="profile-img">
+            <img src="{{profile.profileimg.url}}" alt="">
+        </a>
+        
+        
+        
+        <h2>{{profile.user.username}}</h2>
+        {% if profile.location %}
+        <span><i class="bi bi-geo-alt-fill"></i> {{profile.location}}</span>
+        {% endif %}
+        <p>{{profile.bio}}</p>
+        <div class="profile-action">
+            <!-- <button class="profile-action-btn">Follow</button> -->
+            <button class="btn-flip" data-back="Following" data-front="Follow" data-csrf="{{ csrf_token }}" data-userid="{{profile.user.username}}"></button>
+            <a href="{% url 'user-profile' profile.user.username  %}">View Profile</a>
+        </div>
+    </div>
+    
+    {% endfor %}
+
+
+</section>
+
+</main>
+
+<button id="scrollToTop" class="animate-in"><i class="bi bi-arrow-up-circle-fill"></i></button>
+  
+{% endblock content %}
+
+
+{% block scripts %}
+<script src="{% static 'base_app/js/suggestions.js' %}"></script>
+{% endblock scripts %}
+</body>
+</html>

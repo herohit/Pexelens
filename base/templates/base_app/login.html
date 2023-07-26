@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./styles/signin.css">
+    <title>PexeLens - login</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+          <a href="./home.html">
+            <h1>PIXE<span>L</span>ENS</h1>
+
+          </a>
+        </div>
+    </nav>
+
+    <div class="error-messages">
+        <div class="error-message">
+            <p>Usename doesnt exist</p>
+            <button><i class="bi bi-x-circle-fill"></i></button></div>
+    </div>
+    
+    <div class="signin-container">
+
+        <div id="signin-page" class="card">
+            
+            <form id="signin-form" action="">
+                <div class="signin-heading">
+                    <h2>Sign in to your account</h2>
+                </div>
+                
+
+                <div class="signin-fields">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" placeholder="Enter your username">
+                </div>
+
+                <div class="signin-fields">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Enter your password">
+                </div>
+                <a class="forgot-password-link" href="#">Forgot password? Click here to reset.</a>
+                <button class="sign-button" type="">Sign in</button>
+            </form>
+            
+            <span>Don't have an account?<button class="signup-link">Sign Up</button></span>
+             
+            
+            
+                <div class="wave">
+                    <img src="./assests/Path.png" alt="">
+                </div>
+                <div class="wave">
+                    <img src="./assests/Path 2.png" alt="">
+                </div>
+
+
+        </div>
+
+
+        
+  <div class="card" id="register-card">
+
+    <form id="signin-form" action="">
+        <div class="signin-heading">
+            <h2>Register your Account</h2>
+        </div>
+        
+
+
+
+        <div class="signin-fields">
+            <label for="username">Username</label>
+            <input id="username" type="text" placeholder="Enter your username">
+        </div>
+
+        <div class="signin-fields">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Enter your email" required>
+        </div>
+
+
+        <div class="signin-fields-name">
+
+        
+
+
+        <div class="signin-fields">
+            <label for="email">First Name</label>
+            <input id="email" type="email" placeholder="Enter your email" required>
+        </div>
+
+
+        <div class="signin-fields">
+            <label for="email">Last Name</label>
+            <input id="email" type="email" placeholder="Enter your email" required>
+        </div>
+
+    </div>
+
+        <div class="signin-fields">
+            <label for="re-password">Password</label>
+            <input id="re-password" type="password" placeholder="re-enter your password">
+        </div>
+
+        <div class="signin-fields">
+            <label for="password">Confirm Password</label>
+            <input id="password" type="password" placeholder="Re-enter your password">
+
+        
+        </div>
+
+        
+        <button class="sign-button" type="">Sign up</button>
+    </form>
+    
+    <span>Already have an account?<button class="signin-link">Sign In</button></span>
+     
+    
+    
+        <div class="wave">
+            <img src="./assests/Path.png" alt="">
+        </div>
+        <div class="wave">
+            <img src="./assests/Path 2.png" alt="">
+        </div>
+
+  </div>
+
+
+
+    </div>
+
+
+    <script src="./js/signin.js"></script>
+    </body>
+</html>

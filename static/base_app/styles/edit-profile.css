@@ -1,0 +1,223 @@
+
+/* settings */
+.settings-page{
+  width: 60%;
+  margin: auto;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fbfbfb;
+  box-shadow: 0 10px 10px #ffffff;
+}
+
+
+  .settings-profileimg{
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+    overflow: hidden;
+    border:2px solid #5f9aee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .settings-profileimg img{
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .settings-profilename{
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+  }
+  .settings-profilename button{
+    font-size: 0.8rem;
+    color:#f6ecec;
+    border: none;
+    cursor: pointer;
+    padding-inline:0.5rem ;
+    padding-block:0.1rem ;
+    border-radius: 5px;
+    transition: 0.7s ease-in-out;
+    background-color: #5f9aee;
+  }
+  .settings-profilename button:hover{
+    background-color: rgb(39, 74, 103);
+    color:#fffefe;
+    border: none;
+  }
+  .settings-profilename i{
+    margin-left:0.3rem;
+  }
+
+
+
+
+
+  #settings-account-form{
+    margin-top: 1rem;
+  }
+#settings-account-form h2{
+  text-align: center;
+  
+}
+
+
+
+.signin-heading{
+  padding: 2rem;
+  color: #28335C;
+  margin-bottom: 2rem;
+}
+
+.signin-heading h2{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.signin-fields{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+
+
+.signin-fields input{
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.signin-fields input{
+  border:1px solid #28335c2d;
+}
+
+.signin-fields label{
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  color: #28335C;
+}
+
+.save-btn,.cancel-btn{
+  padding:0.5rem 1rem;
+
+}
+
+.cancel-btn{
+  text-decoration: none;
+  border-radius: 5px;
+  /* background-color: #FC2947; */
+  background-color: rgb(238, 83, 109);
+  color: #fff;
+  transition: all 1s ease;
+}
+
+.save-btn{
+  background-color: #5f9aee;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.save-btn:hover{
+  background-color: rgb(39, 74, 103);
+}
+
+.cancel-btn:hover{
+  background-color:#e20000 ;
+  cursor: pointer;
+}
+
+.editname-form{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-100%);
+  opacity: 0;
+  padding: 1rem;
+  background-color: #fffefe;
+  border-radius: 10px;
+  box-shadow: 6px 1px 50px #a1a0a0;
+  z-index: 9999;
+  transition: all 0.4s ease;
+}
+
+.signin-fields-name{
+  display: flex;
+  width: 450px;
+}
+
+.signin-fields-name div{
+  margin-left: 1rem;
+  width: 200px;
+}
+
+
+.show-name{
+  opacity: 1;
+  top: 50%;
+  z-index: 9999;
+}
+
+
+
+
+.hide-body:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.1;
+}
+
+
+
+
+
+.error-messages{
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(255, 255, 255);
+  padding: 0.6rem;
+  background-color: #f43e90df;
+  border-radius: 10px;
+  z-index: 999;
+  opacity: 1; /* Set initial opacity to 1 */
+  transition: opacity 1s ease-in-out; /* Add CSS transition */
+}
+
+.error-message{
+  display: flex;
+  align-items: center;
+}
+
+.error-message button{
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+
+.error-messages.hidden {
+  opacity: 0; /* Set opacity to 0 to hide the element */
+  pointer-events: none; /* Disable pointer events on hidden element */
+}

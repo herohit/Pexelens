@@ -1,0 +1,201 @@
+nav{
+    position: sticky;
+    top: 0;
+}
+
+#card-container{
+    width: 85%;
+    margin: 1rem auto 2rem auto;
+    background-color: #fbfbfb;
+    padding-inline:1rem ;
+    padding-bottom:1rem ;
+    box-shadow: 0 0 10px #ffffff;
+
+}
+
+.findpeople-heading{
+    background-color: #ffffff;
+    padding:1rem 1rem 1rem 0;
+    color: #555558;
+}
+
+.all-cards{
+    display: grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,auto));
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.single-profile-card{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    /* box-shadow: 0 0 20px #cbcaca; */
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    border-radius: 20px;
+}
+
+.profile-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(92, 173, 240);
+    box-shadow: 0 0 10px rgb(92, 173, 240);
+}
+
+.profile-img img{
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.single-profile-card h2{
+    font-size:1rem;
+}
+
+.single-profile-card span{
+    background-color: rgb(38, 38, 38);
+    color: #e4eff5;
+    border-radius: 20px;
+    padding:2px 10px;
+    padding-left:6px;
+    font-size: 0.7rem;
+}
+
+
+.single-profile-card p{
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.profile-action{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-action-btn,.profile-action a{
+    background-color: rgb(38, 38, 38);
+    color: #e4eff5;
+    padding: 2px 30px;
+    border: 2px solid rgb(38, 38, 38);
+    border-radius: 2px;
+    font-size: 0.9rem;
+    transition: all .5s ease;
+    cursor: pointer;
+}
+
+.profile-action a{
+    padding: 2px 8px;
+    background-color:#e5f2fa;
+    color:rgb(38, 38, 38);
+    border: 3px solid rgba(38, 38, 38, 0.132);
+}
+
+
+.profile-action a:hover{
+    background-color: rgb(38, 38, 38);
+    color: #e4eff5;
+}
+
+.btn-flip {
+    border: none;
+    opacity: 1;
+    /* outline: 0; */
+    color: #fff;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0px 2px;
+    cursor: pointer;
+}
+
+
+.btn-flip.hover:after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+.btn-flip.hover:before {
+    opacity: 0;
+    transform: translateY(50%) rotateX(90deg);
+}
+.btn-flip:after {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    color: #323237;
+    display: block;
+    transition: 0.5s;
+    position: absolute;
+    background: #adadaf;
+    content: attr(data-back);
+    transform: translateY(-50%) rotateX(90deg);
+}
+.btn-flip:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: #adadaf;
+    display: block;
+    padding: 0 15px;
+    line-height: 30px;
+    transition: 0.5s;
+    position: relative;
+    background: #323237;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0);
+}
+
+#scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 9999;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  #scrollToTop i{
+    font-size: 2.5rem;
+    color: steelblue;
+  }
+
+
+  .error-messages{
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(255, 255, 255);
+    padding: 0.6rem;
+    background-color: #f43e90df;
+    border-radius: 10px;
+    z-index: 999;
+    display: none;
+  }
+  
+  .error-message{
+    display: flex;
+    align-items: center;
+  }
+  
+  .error-message button{
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 1rem;
+    cursor: pointer;
+  }

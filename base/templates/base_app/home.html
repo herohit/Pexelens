@@ -1,0 +1,135 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load displayTimeCustom %}  
+
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'base_app/styles/home.css' %}">  
+    {% endblock styles %}
+      
+
+    
+    {% block title %}
+    <title>PexeLens </title>   
+    {% endblock title %}
+
+    {% block nav %}
+    {% include 'nav.html' %}
+    {% endblock nav %}
+
+    {% block content %}
+
+    {% if is_new_user %}
+    <div class="newuser-display animate-in">
+      <p>Welcome to our platform !</p>
+      <span>Click <a href="{% url 'suggestion-feed' %}">here</a>  to find and connect with people.</span>
+    </div>
+    {% else %}
+      
+    
+
+    
+<div class="error-messages">
+  <div class="error-message">
+    <p></p>
+    <button><i class="bi bi-x-circle-fill"></i></button>     
+  </div>
+</div>
+  
+
+    <!-- main -->
+    <main class="main-home animate-in" >
+  <!--   main-post -->    
+
+  <div class="feed">
+    <h1>Feed</h1>
+    <form method="GET" action="" class="feed-text">
+      <input type="hidden" name="q" value="{{ request.GET.q }}">
+      <button type="submit" name="sort_by" value="latest">Latest</button>
+      <button type="submit" name="sort_by" value="popular">Popular</button>
+    </form>
+  </div>
+<!--  Posts  -->
+  <div class="main-posts">
+      
+<!--   Box1   -->
+{% for post in posts   %}
+    <div class="post-box">
+      
+      <a href="{% url 'comment-post' post.id %}"><img src="{{post.image.url}}" data-src="{{post.image.url}}" class="lazy-load"  alt=""></a>
+      
+      <div class="post-info">
+      
+        <div class="post-profile">
+          <div class="post-img">
+
+            {% for single_user in all_user  %}
+              {% if single_user.user.username == post.user %}
+              <img src="{{single_user.profileimg.url}}"  alt="profile">
+              {% endif %}
+                
+            {% endfor %}
+          </div>
+          <a href="{% url 'user-profile' post.user %}"><h3>{{post.user}}</h3></a>
+        </div>
+                
+        <div class="likes"> 
+            
+<!--           heart icon -->
+  
+          <button class="like-btn-home" data-post-id="{{ post.id }}" data-csrf="{{ csrf_token }}">
+            
+              
+            {% if post.id in liked_post_ids %}
+            <i class="bi bi-heart-fill" style="color: red;"></i>
+            {% else %}
+            <i class="bi bi-suit-heart" ></i>
+            {% endif %}
+            </button>
+          <span class="like-count-home"  data-post-id="{{ post.id }}">{{post.no_of_likes}} </span> 
+
+<!--           comment icon -->
+
+          <button class="comment-button-home" ><i class="bi bi-chat"></i></button>
+          <span class="comment-count-home" data-post-id="{{ post.id }}">{{post.no_of_comments}} </span>
+          
+        </div>
+      </div>
+      <div class="caption">
+        <p>{{post.caption}}</p>
+        <span class="post-time">{{post.created_at|display_time_elapsed}} ago</span>
+      </div>
+
+      <div class="post-box-comment">
+        <p>Add Comment</p>
+        <div class="comment-input-field">
+          <input type="text" placeholder="enter comment">
+          <button class="send-comment"  data-post-id="{{ post.id }}" data-csrf="{{ csrf_token }}" ><i class="bi bi-send-fill"></i></button>
+          <button class="close-commentdiv"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
+      </div>
+
+      
+    </div>
+{% empty %}
+    <div><p>No Match Found</p></div>
+{% endfor %}
+
+    
+
+
+
+    
+  </div>
+
+
+    </main>
+
+    <button id="scrollToTop" class="animate-in"><i class="bi bi-arrow-up-circle-fill"></i></button>
+    {% endif %}
+  {% endblock content %}
+
+  {% block scripts %}
+
+  <script src="{% static 'base_app/js/home.js' %}"></script>
+
+  {% endblock scripts %}

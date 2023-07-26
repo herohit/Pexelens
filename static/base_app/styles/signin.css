@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.logo{
+  text-transform:uppercase;
+  letter-spacing:5px;
+  font-size:20px;
+  cursor: pointer;
+  }
+  .logo a{
+    text-decoration: none;
+    color: #0c2037;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .logo span{
+  color: rgb(228, 21, 21);
+  }
+  
+  nav{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    margin-top: 0.47rem;
+    margin-left: 5.9rem;
+    z-index: 999;
+    }
+
+.signin-container{
+    /* background:linear-gradient(to right,#7FA4EA,#348CF4); */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#signin-page,#register-card{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: aliceblue;
+    padding: 2rem;
+    height:80vh;
+    width: 80vw;
+    border-radius: 2rem;
+    box-shadow: 0 0 50px 10px #d2e4fa;
+    overflow: hidden;
+}
+
+
+
+#signin-form{
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+}
+
+.signin-heading{
+    padding: 2rem;
+    color: #28335C;
+    margin-bottom: 2rem;
+}
+
+.signin-heading h2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.signin-fields{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+
+
+.signin-fields input,.sign-button{
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.signin-fields input{
+    border:1px solid #28335c2d;
+}
+
+.signin-fields label{
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    color: #28335C;
+}
+
+#signin-page span{
+    margin-top: 1rem;
+}
+
+.signin-link,.signup-link{
+    background: none;
+    border: none;
+    color: #348CF4;
+    margin-left:0.5rem ;
+    cursor: pointer;
+}
+
+
+.sign-button{
+    margin-top: 1rem;
+    color: aliceblue;
+    background: gray;
+    cursor: pointer;
+    transition:all 0.5s ease;
+
+}
+
+.sign-button:hover{
+    background: rgb(94, 94, 94);
+}
+
+.wave{
+    position: absolute;
+    bottom: -3rem;
+    width: 135%;
+    pointer-events: none;
+}
+
+.wave img{
+    width: 100%;
+}
+
+
+
+
+
+
+.card{
+    transition: transform 1.5s;
+    backface-visibility: hidden;
+}
+
+
+.card.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+
+
+  #register-card{
+    position: absolute;
+    transform: rotateY(180deg);
+    height: 85vh;
+    padding-top: 1rem;
+}
+
+
+  #register-card span{
+    padding: 1rem;
+  }
+
+  #register-card .signin-fields{
+    margin-bottom: 0.8rem;
+  }
+  #register-card .signin-heading{
+    margin-bottom: 0;
+    padding: 1rem;
+  }
+  
+  .signin-container.flipped #signin-page {
+    transform: rotateY(180deg);
+  }
+  
+  .signin-container.flipped #register-card {
+    transform: rotateY(0);
+  }
+
+
+
+  .page-transition {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  
+
+  .error-messages{
+    position: absolute;
+    top: 10%;
+    left: 45%;
+    color: rgb(255, 255, 255);
+    padding: 0.6rem;
+    background-color: #f43e90df;
+    border-radius: 10px;
+    z-index: 999;
+    animation: fademessage 1.5s forwards;
+    opacity: 1; 
+    transition: opacity 1.4s ease-in-out; 
+  }
+
+  .error-message{
+    display: flex;
+    align-items: center;
+  }
+
+  .error-message button{
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 1rem;
+    cursor: pointer;
+  }
+
+  @keyframes fademessage {
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(40%);
+    }
+    
+  }
+
+  .forgot-password-link{
+    text-decoration: none;
+    color: #348CF4;
+  }
+
+
+.error-messages.hidden {
+  opacity: 0; /* Set opacity to 0 to hide the element */
+  pointer-events: none;
+}
+
+
+.signin-fields-name{
+  display: flex;
+}
+
+.signin-fields-name .signin-fields{
+  margin-left:0.5rem;
+}
